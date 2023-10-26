@@ -1,7 +1,4 @@
-/**
- * core/index.js
- * Vishal Kumar
- */
+
 
 'use strict';
 

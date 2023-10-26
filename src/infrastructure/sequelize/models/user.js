@@ -1,7 +1,3 @@
-/**
- * user.js
- * Vishal Kumar
- */
 
 'use strict';
 

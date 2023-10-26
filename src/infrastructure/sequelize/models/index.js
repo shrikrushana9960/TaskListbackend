@@ -3,10 +3,13 @@
  * Vishal Kumar
  */
 
-'use strict';
+"use strict";
 
 const User = require(`./user`);
-
+const TaskColumn = require("./task_column");
+const Tasks = require("./task");
 module.exports = {
-	User,
+  User,
+  TaskColumn,
+  Tasks,
 };

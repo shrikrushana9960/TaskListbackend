@@ -1,7 +1,4 @@
-/**
- * config.js
- * Vishal Kumar
- */
+
 
 'use strict';
 
@@ -21,11 +18,11 @@ const config = {
 			port: PORT,
 		},
 		postgreConfig: {
-			username: `fun`,
-			password: `gyaan`,
-			host: `localhost`,
-			port: POSTGRE_PORT,
-			database: Pack.name,
+			username: `doadmin`,
+			password: `AVNS_WR7k0GOIJ8u1l-r1bzB`,
+			host: `dbs-do-user-14012136-0.c.db.ondigitalocean.com`,
+			port: 25060,
+			database: 'defaultdb',
 			dialect: `postgres`,
 		},
 		rollbarConfig: {

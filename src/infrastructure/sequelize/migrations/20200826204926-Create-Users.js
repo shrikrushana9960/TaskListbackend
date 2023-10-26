@@ -1,7 +1,4 @@
-/**
- * 20200903081310-Create-Posts.js
- * Vishal Kumar
- */
+
 
 'use strict';
 
