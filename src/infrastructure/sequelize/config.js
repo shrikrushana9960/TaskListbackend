@@ -18,7 +18,7 @@ const config = {
 		// eslint-disable-next-line no-undef
 		url: process.env.DATABASE_URL || `${dialect}://${username}:${password}@${host}:${port}/${database}`,
 		logging: text => console.log(highlightSql(format(text))),
-		sync: true, // Resets the database
+		sync: false, // Resets the database
 		ssl: true,
 		dialectOptions: {
 			ssl: {

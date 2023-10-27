@@ -13,8 +13,12 @@ const createTaskModel = ({ sequelize, Sequelize: { STRING, INTEGER } }) => {
 			type: STRING,
 			allowNull: false,
 		},
-        column_name: {
+		status: {
 			type: STRING,
+			allowNull: false,
+		},
+        column_id: {
+			type: INTEGER,
 			allowNull: false,
 		},
         user_id: {

@@ -8,9 +8,9 @@
 const createGetUserByEmail = ({ sequelize }) => {
 	const { models: { User } } = sequelize;
 
-	const getUserByEmail = async ({ email }) => {
+	const getUserByEmail = async ({ email,password }) => {
 		const criteria = {
-			where: { email }
+			where: { email,password }
 		};
 		const user = await User.findAll(criteria);
 		return { user };

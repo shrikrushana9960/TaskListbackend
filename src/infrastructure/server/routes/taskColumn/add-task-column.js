@@ -1,24 +1,19 @@
-/**
- * add-user.js
- * Vishal Kumar
- */
 
 'use strict';
 
 const { validateInput, toApiResponse, ApiError, errorCodes: { internalServerErrorCode } } = require(`../../utils`);
 
-const createAddUserRoute = async ({ core: { User: { addUser } }, router, ExpressValidator: { body, validationResult } }) => {
+const createAddTaskColumnRoute = async ({ core: { TaskColumn: { addTaskColumn } }, router, ExpressValidator: { body, validationResult } }) => {
 	router.post(
-		`/addUser`,
-		[
-			body(`email`).isEmail()
-		],
-		validateInput(validationResult),
-		toApiResponse(async ({ body: { email,password } }) => {
+		`/add`,
+		toApiResponse(async ({ body:{ title, user_id } }) => {
+			
 			try {
-				let data = await addUser({ email,password });
+				console.log("hii")
+				let data = await addTaskColumn({ title, user_id });
 				return { status: 201, data };
 			} catch (error) {
+				console.log(error)
 				let apiError = new ApiError({
 					code: internalServerErrorCode,
 					details: error,
@@ -37,5 +32,5 @@ const createAddUserRoute = async ({ core: { User: { addUser } }, router, Express
 };
 
 module.exports = {
-	createAddUserRoute,
+	createAddTaskColumnRoute,
 };

@@ -10,7 +10,7 @@ const Sequelize = require(`sequelize`);
 
 const { postgreConfig: { dialect } } = require(`../../config`);
 const { url, logging, ssl, dialectOptions, sync } = require(`./config`);
-const { User: { createUserModel } } = require(`./models`);
+const { User: { createUserModel },Tasks:{createTaskModel},TaskColumn:{createTaskColumnModel} } = require(`./models`);
 
 const createSequelize = async () => {
 	const sequelize = new Sequelize(url, {
@@ -22,10 +22,13 @@ const createSequelize = async () => {
 
 	// Create Models
 	const User = createUserModel({ sequelize, Sequelize });
-
+	const TaskColumn=createTaskColumnModel({ sequelize, Sequelize })
+	const Tasks=createTaskModel({ sequelize, Sequelize })
 	// Associate Models
 	const models = {
 		User,
+		TaskColumn,
+		Tasks
 	};
 	Object.values(models).forEach(model => {
 		if (typeof model.associate !== `function`) {
@@ -40,15 +43,7 @@ const createSequelize = async () => {
 		db: sequelize,
 		models,
 		close: () => sequelize.connectionManager.close(),
-		truncate: async () => {
-			await User.truncate({ cascade: true });
-			await Promise.all(
-				Object.values(models)
-					// truncating HC and Driver (with a cascade) in parallel introduces deadlocks,
-					.filter(m => ![User].includes(m))
-					.map(model => model.truncate({ cascade: true })),
-			);
-		},
+		
 	};
 };
 

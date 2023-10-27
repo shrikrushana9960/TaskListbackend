@@ -12,8 +12,8 @@ module.exports = {
       content: {
           type: Sequelize.STRING
       },
-      column_name:{
-        type: Sequelize.STRING
+      column_id:{
+        type: Sequelize.INTEGER
       },
       user_id: {
         type: Sequelize.INTEGER

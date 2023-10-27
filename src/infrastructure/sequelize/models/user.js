@@ -17,6 +17,10 @@ const createUserModel = ({ sequelize, Sequelize: { STRING, INTEGER } }) => {
 				isEmail: true,
 			},
 		},
+		password: {
+			type: STRING,
+			allowNull: false
+		},
 	}, {
 		freezeTableName: true,
 		timestamps: false,

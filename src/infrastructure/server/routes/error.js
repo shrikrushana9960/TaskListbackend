@@ -19,6 +19,7 @@ const createErrorRoute = ({ reportError }) => (err, req, res, next) => {
 			code: internalServerErrorCode,
 		});
 
+		
 	res.status(status).send({
 		success: false,
 		status,

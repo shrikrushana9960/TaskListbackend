@@ -9,14 +9,14 @@ const { validateInput, toApiResponse, ApiError, errorCodes: { internalServerErro
 
 const createGetUserByEmailRoute = async ({ core: { User: { getUserByEmail } }, router, ExpressValidator: { param, validationResult } }) => {
 	router.get(
-		`/getUserByEmail/:email`,
+		`/getUserByEmail/:email/:password`,
 		[
 			param(`email`).isEmail()
 		],
 		validateInput(validationResult),
-		toApiResponse(async ({ params: { email } }) => {
+		toApiResponse(async ({ params: { email,password } }) => {
 			try {
-				let data = await getUserByEmail({ email });
+				let data = await getUserByEmail({ email,password });
 				return { status: 201, data };
 			} catch (error) {
 				let apiError = new ApiError({
